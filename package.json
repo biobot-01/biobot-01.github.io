@@ -6,7 +6,7 @@
   "scripts": {
     "sass": "node-sass -x --output-style expanded src/sass/main.sass dist/css/main.css",
     "watch:sass": "onchange 'src/sass/*.sass' -- npm run sass",
-    "serve": "browser-sync -f 'dist' --no-open",
+    "serve": "browser-sync start -s -f '*.html' 'dist' --no-open",
     "start": "run-p serve watch:sass"
   },
   "repository": {
