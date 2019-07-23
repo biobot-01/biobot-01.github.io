@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/biobot-01/biobot-01.github.io/issues"
   },
-  "homepage": "https://github.com/biobot-01/biobot-01.github.io#readme"
+  "homepage": "https://github.com/biobot-01/biobot-01.github.io#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.7"
+  }
 }
