@@ -4,6 +4,7 @@
   "description": "Kevin Michael portfolio",
   "main": "index.js",
   "scripts": {
+    "sass": "node-sass -x --output-style expanded src/sass/main.sass dist/css/main.css",
     "serve": "browser-sync --no-open"
   },
   "repository": {
