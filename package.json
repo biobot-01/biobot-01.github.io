@@ -1,0 +1,19 @@
+{
+  "name": "biobot-01.github.io",
+  "version": "1.0.0",
+  "description": "Kevin Michael portfolio",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/biobot-01/biobot-01.github.io.git"
+  },
+  "author": "Kevin Michael",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/biobot-01/biobot-01.github.io/issues"
+  },
+  "homepage": "https://github.com/biobot-01/biobot-01.github.io#readme"
+}
