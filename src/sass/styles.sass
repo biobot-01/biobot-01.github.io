@@ -1,0 +1,55 @@
+.hero-logo
+  margin: 0 auto
+
+h1
+  span
+    &:first-child
+      &::before
+        content: "\003c"
+        margin-right: 5px
+        transform: translateX(50px)
+
+      &::after
+        content: "\003e"
+        margin-left: 5px
+        transform: translateX(-50px)
+
+      &::before,
+      &::after
+        display: inline-block
+        opacity: 0
+        transition: transform .3s, opacity .2s
+
+      &:hover,
+      &:focus
+        &::before,
+        &::after
+          opacity: 1
+          transform: translateX(0)
+
+.portfolio
+  cursor: pointer
+
+  &:hover,
+  &:focus,
+  &:active
+    .portfolio-content
+      background-color: $white-transparent
+
+    .portfolio-title
+      color: $theme-blue-dark
+
+.portfolio-content
+  background-color: $black-transparent
+  transition: background-color .2s linear
+
+.portfolio-title
+  color: $white
+  position: relative
+  top: 50%
+  transform: translateY(-50%)
+  transition: color .4s linear
+
+.icon-code
+  color: $theme-blue
+  top: 2px
