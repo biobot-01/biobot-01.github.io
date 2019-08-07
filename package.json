@@ -4,7 +4,11 @@
   "description": "Kevin Michael portfolio",
   "main": "index.js",
   "scripts": {
-    "sass": "node-sass -x --output-style expanded src/sass/main.sass dist/css/main.css",
+    "sass": "node-sass --omit-source-map-url --output-style expanded src/sass/main.sass dist/css/main.css",
+    "autoprefix": "postcss --use autoprefixer --no-map --output dist/css/main.css dist/css/main.css",
+    "cleancss": "cleancss --source-map -o dist/css/main.min.css dist/css/main.css",
+    "clean:css": "shx rm -R dist/css/",
+    "build:css": "run-s clean:css sass autoprefix cleancss",
     "watch:sass": "onchange 'src/sass/*.sass' -- npm run sass",
     "serve": "browser-sync start -s -f '*.html' 'dist' --no-open",
     "start": "run-p serve watch:sass"
@@ -27,6 +31,7 @@
     "node-sass": "^4.12.0",
     "npm-run-all": "^4.1.5",
     "onchange": "^6.0.0",
-    "postcss-cli": "^6.1.3"
+    "postcss-cli": "^6.1.3",
+    "shx": "^0.3.2"
   }
 }
