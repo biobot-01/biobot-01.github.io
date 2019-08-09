@@ -1,0 +1,35 @@
+env:
+  browser: true
+  es6: true
+extends: 'eslint:recommended'
+globals:
+  Atomics: readonly
+  SharedArrayBuffer: readonly
+parserOptions:
+  ecmaVersion: 2018
+  sourceType: module
+rules:
+  dot-notation: 2
+  strict:
+    - 2
+    - global
+  camelcase: 2
+  comma-dangle:
+    - 2
+    - always-multiline
+  indent:
+    - 2
+    - 2
+  max-len:
+    - 1
+    -
+      code: 80
+  no-tabs: 2
+  quotes:
+    - 2
+    - single
+    -
+      avoidEscape: true
+      allowTemplateLiterals: true
+  no-var: 2
+  no-undef: 1
