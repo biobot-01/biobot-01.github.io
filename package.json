@@ -4,7 +4,7 @@
   "description": "Kevin Michael portfolio",
   "main": "index.js",
   "scripts": {
-    "sass": "node-sass --omit-source-map-url --output-style expanded src/sass/main.sass dist/css/main.css",
+    "sass": "node-sass --output-style expanded src/sass/main.sass dist/css/main.css",
     "autoprefix": "postcss --use autoprefixer --no-map --output dist/css/main.css dist/css/main.css",
     "cleancss": "cleancss --source-map -o dist/css/main.min.css dist/css/main.css",
     "clean:css": "shx rm -R dist/css/",
