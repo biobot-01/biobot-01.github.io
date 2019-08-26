@@ -2,8 +2,8 @@ import {data} from './data.js';
 import {Modal} from './modules/modal.js';
 // import { validate, send } from './modules/form.js';
 
-let modalButtons = document.querySelectorAll('.is-modal-button');
-let siblingElem = document.querySelector('.footer');
+const modalButtons = document.querySelectorAll('.is-modal-button');
+const siblingElem = document.querySelector('.footer');
 
 for (let i = 0; i < modalButtons.length; i++) {
   modalButtons[i].addEventListener('click', function() {
@@ -22,3 +22,11 @@ for (let i = 0; i < modalButtons.length; i++) {
     modal.close();
   });
 }
+
+const hireMeButton = document.getElementById('hireMe');
+
+hireMeButton.addEventListener('click', function() {
+  const contactSection = document.getElementById('contactSection');
+
+  contactSection.scrollIntoView({behavior: 'smooth'});
+});
