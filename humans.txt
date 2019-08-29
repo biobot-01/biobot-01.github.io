@@ -1,0 +1,11 @@
+/* OWNER */
+Developer: Kevin Michael
+Site: https://biobot-01.github.io
+Email: kevingsx[at]gmail.com
+Location: Cape Town, South Africa
+
+/* SITE */
+Last update: 29/08/2019
+Standards: HTML5, CSS3, JavaScript
+Components: Bulma
+Software: Atom, Git, GitHub, npm, GIMP, Inkscape
