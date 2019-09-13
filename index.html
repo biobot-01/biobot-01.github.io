@@ -275,13 +275,13 @@
       <section class="section has-background-dark" id="contactSection">
         <div class="container has-text-centered">
           <h2 class="title has-text-white">Contact Me</h2>
-          <form action="#" method="post">
+          <form name="contact" method="post">
             <div class="columns is-centered">
               <div class="column is-5-tablet is-4-desktop">
                 <div class="field">
                   <label class="label is-sr-only" for="name">Name</label>
                   <div class="control">
-                    <input class="input is-medium" type="text" name="name" placeholder="Name" required>
+                    <input class="input is-medium" type="text" name="name" id="name" placeholder="Name">
                   </div>
                 </div>
               </div>
@@ -290,7 +290,7 @@
                 <div class="field">
                   <label class="label is-sr-only" for="email">Email</label>
                   <div class="control">
-                    <input class="input is-medium" type="text" name="email" placeholder="Email" required>
+                    <input class="input is-medium" type="text" name="email" id="email" placeholder="Email">
                   </div>
                 </div>
               </div>
@@ -301,7 +301,7 @@
                 <div class="field">
                   <label class="label is-sr-only" for="message">Message</label>
                   <div class="control">
-                    <textarea class="textarea is-medium" name="message" rows="5" placeholder="Message" required></textarea>
+                    <textarea class="textarea is-medium" name="message" id="message" rows="5" placeholder="Message"></textarea>
                   </div>
                 </div>
               </div>
