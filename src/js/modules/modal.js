@@ -15,7 +15,7 @@ class Modal {
     this.sibling.after(modal);
     modal.append(modalBackground);
 
-    modal.id = this.id;
+    modal.setAttribute('id', this.id);
     modal.className = 'modal is-active';
     modalBackground.className = 'modal-background';
     this.html.classList.add('is-clipped');
@@ -27,33 +27,31 @@ class Modal {
     let modalContent = document.createElement('div');
     let closeButton = document.createElement('button');
     let box = document.createElement('div');
-    let imageContent = document.createElement('figure');
+    let figure = document.createElement('figure');
     let image = document.createElement('img');
+    let data = this.data.find(item => item.id === this.id);
 
     this.modal.append(modalContent);
     this.modal.append(closeButton);
     modalContent.append(box);
-    box.append(imageContent);
-    imageContent.append(image);
+    box.append(figure);
+    figure.append(image);
 
     modalContent.className = 'modal-content';
     closeButton.className = 'modal-close is-large';
     closeButton.setAttribute('role', 'button');
     closeButton.setAttribute('aria-label', 'close');
     box.className = 'box';
-    imageContent.className = 'image is-16by9';
+    figure.className = 'image is-16by9';
 
-    for (let i = 0; i < this.data.length; i++) {
-      if (this.id === this.data[i].id) {
-        image.setAttribute('src', this.data[i].src);
+    if ('src' in data && 'alt' in data) {
+      image.setAttribute('src', data.src);
+      image.setAttribute('alt', data.alt);
+    }
 
-        if ('srcset' in this.data[i] && 'sizes' in this.data[i]) {
-          image.setAttribute('srcset', this.data[i].srcset);
-          image.setAttribute('sizes', this.data[i].sizes);
-        }
-
-        image.setAttribute('alt', this.data[i].alt);
-      }
+    if ('srcset' in data && 'sizes' in data) {
+      image.setAttribute('srcset', data.srcset);
+      image.setAttribute('sizes', data.sizes);
     }
 
     this.closeButton = document.querySelector('.modal-close');
@@ -67,11 +65,14 @@ class Modal {
     let cardBody = document.createElement('section');
     let cardContent = document.createElement('div');
     let cardDescription = document.createElement('h5');
-    let techTags = document.createElement('div');
-    let cardImageContent = document.createElement('figure');
+    let tags = document.createElement('div');
+    let cardfigure = document.createElement('figure');
     let cardImage = document.createElement('img');
     let cardFoot = document.createElement('footer');
     let cardLink = document.createElement('a');
+    let data = this.data.find(item => item.id === this.id);
+    let technologies = data ? data.technologies : [];
+    let image = data ? data.image : {};
 
     this.modal.append(card);
     card.append(cardHead);
@@ -80,15 +81,16 @@ class Modal {
     card.append(cardBody);
     cardBody.append(cardContent);
     cardContent.append(cardDescription);
-    cardContent.append(techTags);
-    cardBody.append(cardImageContent);
-    cardImageContent.append(cardImage);
+    cardContent.append(tags);
+    cardBody.append(cardfigure);
+    cardfigure.append(cardImage);
     card.append(cardFoot);
     cardFoot.append(cardLink);
 
     card.className = 'modal-card';
     cardHead.className = 'modal-card-head';
     cardTitle.className = 'modal-card-title has-text-dark';
+    cardTitle.innerHTML = data.title;
 
     closeButton.className = 'delete';
     closeButton.setAttribute('role', 'button');
@@ -97,52 +99,42 @@ class Modal {
     cardBody.className = 'modal-card-body';
     cardContent.className = 'content';
     cardDescription.className = 'title has-text-dark';
-    techTags.className = 'tags';
-    cardImageContent.className = 'image is-9by16 has-text-dark';
+    cardDescription.innerHTML = data.description;
+    tags.className = 'tags';
+    cardfigure.className = 'image is-9by16 has-text-dark';
 
     cardFoot.className = 'modal-card-foot';
     cardLink.className = 'button is-primary';
     cardLink.innerHTML = 'View';
+    cardLink.setAttribute('href', data.link);
 
-    for (let i = 0; i < this.data.length; i++) {
-      if (this.id === this.data[i].id) {
-        cardTitle.innerHTML = this.data[i].title;
-        cardDescription.innerHTML = this.data[i].description;
+    for (let i = 0; i < technologies.length; i++) {
+      let tag = document.createElement('span');
+      tags.append(tag);
 
-        let techArr = this.data[i].technologies;
-        for (let j = 0; j < techArr.length; j++) {
-          let techTag = document.createElement('span');
-          techTags.append(techTag);
+      tag.innerHTML = technologies[i];
+      tag.className = 'tag is-dark';
+    }
 
-          techTag.innerHTML = techArr[j];
-          techTag.className = 'tag is-dark';
-        }
-
-        cardImage.setAttribute('src', this.data[i].image.src);
-
-        if ('srcset' in this.data[i].image && 'sizes' in this.data[i].image) {
-          cardImage.setAttribute('srcset', this.data[i].image.srcset);
-          cardImage.setAttribute('sizes', this.data[i].image.sizes);
-        }
-
-        cardImage.setAttribute('alt', this.data[i].image.alt);
-
-        cardLink.setAttribute('href', this.data[i].link);
-      }
+    if ('src' in image && 'alt' in image) {
+      cardImage.setAttribute('src', image.src);
+      cardImage.setAttribute('alt', image.alt);
+    }
+    if ('srcset' in image && 'sizes' in image) {
+      cardImage.setAttribute('srcset', image.srcset);
+      cardImage.setAttribute('sizes', image.sizes);
     }
 
     this.closeButton = document.querySelector('.delete');
   }
 
   close() {
-    let modal = this.modal;
-    let html = this.html;
-
-    this.closeButton.addEventListener('click', function() {
-      modal.remove();
-      html.classList.remove('is-clipped');
+    this.closeButton.addEventListener('click', (event) => {
+      this.modal.remove();
+      this.html.classList.remove('is-clipped');
+      event.preventDefault();
     });
   }
 }
 
-export {Modal};
+export default Modal;

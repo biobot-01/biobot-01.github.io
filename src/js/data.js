@@ -1,9 +1,7 @@
-export const data = [
+const data = [
   {
     id: 'email',
-    src: [
-      'dist/img/contact/email.svg',
-    ],
+    src: 'dist/img/contact/email.svg',
     alt: 'Contact Kevin Michael via Email',
   },
   {
@@ -130,6 +128,23 @@ export const data = [
       sizes: '(min-width: 769px) 600px, calc(100vw - 40px)',
       alt: 'Python Command Line Battleships Game',
     },
-    link: 'https://www.github.com/biobot-01',
+    link: 'https://www.github.com/biobot-01/battleships',
   },
 ]
+
+const fields = [
+  {
+    name: 'name',
+    rules: 'required|min_length[3]',
+  },
+  {
+    name: 'email',
+    rules: 'required|valid_email',
+  },
+  {
+    name: 'message',
+    rules: 'required|min_length[6]',
+  },
+];
+
+export {data, fields};
