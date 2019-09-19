@@ -1,6 +1,6 @@
 const data = [
   {
-    id: 'email',
+    id: 'contactEmail',
     src: 'dist/img/contact/email.svg',
     alt: 'Contact Kevin Michael via Email',
   },

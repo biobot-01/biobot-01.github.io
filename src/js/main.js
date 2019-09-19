@@ -37,25 +37,27 @@ hireMeButton.addEventListener('click', function(event) {
   event.preventDefault();
 });
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
   new FormValidator(
     'contact',
     fields,
-    function(errors, event) {
+    (errors, event) => {
       if (errors.length > 0) {
         // Show the errors
+        console.log(errors);
         for (let i = 0; i < errors.length; i++) {
+          let error = errors[i];
           let helpElem = document.createElement('p');
           helpElem.className = 'help is-danger has-text-left';
-          errors[i].element.closest('.field').append(helpElem);
-          helpElem.innerHTML = errors[i].message;
+          error.element.closest('.field').append(helpElem);
+          helpElem.innerHTML = error.message;
         }
         event.preventDefault();
         return false;
       } else {
         // Show success
         const form = document.forms.contact;
-        form.action = 'https://formspree.io/kevingsx@gmail.com'
+        form.setAttribute('action', 'https://formspree.io/kevingsx@gmail.com');
         let httpRequest = new XMLHttpRequest();
         let formData = new FormData(form);
         if (httpRequest.readyState === XMLHttpRequest.DONE) {
@@ -84,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return false;
           }
         }
-        event.preventDefault();
       }
     }
   );
